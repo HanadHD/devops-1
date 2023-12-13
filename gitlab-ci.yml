@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+
+test_job:
+  stage: test
+  script:
+    - npm test
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Deploying application"
+    # Add deployment scripts here
+  only:
+    - Main
